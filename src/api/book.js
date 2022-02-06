@@ -1,23 +1,23 @@
 import axios from "@/api/axios";
 
-const getBooks = params =>{
-    return axios.get('/books',{params:params})
+const getBooks = per_page =>{
+    return axios.get('/books',{params:{per_page:per_page}})
 }
 
 const getBook = id =>{
-    return axios.get('/book',{params:{id:id}})
+    return axios.get('/book/'+id)
 }
 
-const createBook = params =>{
-    return axios.post('/book/create',{params:params})
+const createBook = data =>{
+    return axios.post('/book/create',data)
 }
 
-const updateBook = (id,data) =>{
-    return axios.patch('/book/update',{params:{id:id,data:data}})
+const updateBook = data =>{
+    return axios.patch('/book/update/'+data.id,data)
 }
 
 const deleteBook = id =>{
-    return axios.delete('/book/delete',{params:{id:id}})
+    return axios.delete('/book/delete/'+id)
 }
 
 export default {
